@@ -1,9 +1,16 @@
 import { StyleSheet } from 'react-native';
 
+const color = {
+  background: 'lightyellow',
+  primary: 'lightblue',
+  secondary: 'lightgreen',
+  text: 'black'
+}
+
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightgrey',
+        backgroundColor: color.background,
     },
     tasksWrapper: {
         paddingTop: 80,
@@ -17,7 +24,7 @@ export default StyleSheet.create({
         marginTop: 30,
     },
     item: {
-        backgroundColor: 'white',
+        backgroundColor: color.primary,
         padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
@@ -33,7 +40,7 @@ export default StyleSheet.create({
     square: {
         width: 24,
         height: 24,
-        backgroundColor: 'green',
+        backgroundColor: color.secondary,
         borderRadius: 5,
         marginRight: 15,
     },
@@ -46,7 +53,40 @@ export default StyleSheet.create({
         height: 12,
         borderRadius: 5,
         borderWidth: 2,
-        borderColor: 'green',
+        borderColor: color.secondary,
     },
-    
+    writeTaskWrapper: {
+        position: 'absolute',
+        bottom: 60,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    input: {
+        paddingVertical: 15,
+        paddingHorizontal: 15,
+        backgroundColor: 'white',
+        borderRadius: 60,
+        borderColor: 'lightgrey',
+        borderWidth: 1,
+        width: 250,
+        color: color.text,
+    },
+        addWrapper: {
+        width: 60,
+        height: 60,
+        backgroundColor: 'white',
+        borderRadius: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: 'lightgrey',
+        borderWidth: 1,
+    },
+    addText: {
+      color: color.text,
+
+    },
+
+
 })
