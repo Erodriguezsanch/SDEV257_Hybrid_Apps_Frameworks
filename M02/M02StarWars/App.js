@@ -8,30 +8,30 @@ import { Platform } from "react-native";
 import Planets from "./Planets";
 import Films from './Films';
 import Spaceships from './Spaceships';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      {Platform.OS === 'ios' && (
-        <Tab.Navigator>
-          <Tab.Screen name='Planets' component={Planets} />
-          <Tab.Screen name='Films' component={Films} />
-          <Tab.Screen name='Spaceships' component={Spaceships} />
-        </Tab.Navigator>
-      )}
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        {Platform.OS === 'ios' ? (
+          <Tab.Navigator>
+            <Tab.Screen name='Planets' component={Planets} />
+            <Tab.Screen name='Films' component={Films} />
+            <Tab.Screen name='Spaceships' component={Spaceships} />
+          </Tab.Navigator>
+        ) : (
+          <Drawer.Navigator>
+            <Drawer.Screen name='Planets' component={Planets} />
+            <Drawer.Screen name='Films' component={Films} />
+            <Drawer.Screen name='Spaceships' component={Spaceships} />
+          </Drawer.Navigator>
+        )}
+      </NavigationContainer>
+    </GestureHandlerRootView>
+  );
+}
 
-      {Platform.OS === 'android' && (
-        <Drawer.Navigator>
-          <Drawer.Screen name='Planets' component={Planets} />
-          <Drawer.Screen name = 'Films' component={Films} />
-          <Drawer.Screen name='Spaceships' component={Spaceships}/>
-        </Drawer.Navigator>
-      )}
-
-
-    </NavigationContainer>  
-  )
-};

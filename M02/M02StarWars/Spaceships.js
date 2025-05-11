@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator, TextInput, Button, Modal } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator, TextInput, Button, Modal } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
 import styles from './styles';
 
 export default function Spaceships({ navigation }) {
@@ -8,6 +9,7 @@ export default function Spaceships({ navigation }) {
 
   const [searchText, setSearchText] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItemText, setSelectedItemText] = useState('');
 
   useEffect(() => {
     fetch('https://www.swapi.tech/api/starships/')
@@ -24,11 +26,16 @@ export default function Spaceships({ navigation }) {
 
   const handleSearch = () => {
     setModalVisible(true);
+    setSelectedItemText(`Searching for: ${searchText}`);
+  };
+
+  const handleSwipe = (title) => {
+    setSelectedItemText(title);
+    setModalVisible(true);
   };
 
   return (
     <View style={styles.container}>
-      
       {/* Search */}
       <TextInput
       style={styles.input}
@@ -40,14 +47,14 @@ export default function Spaceships({ navigation }) {
 
       {/* Modal */}
       <Modal 
-      visible={modalVisible}
-      transparent={true}
-      animationType='fade'
-      onRequestClose={() => setModalVisible(false)}
+        visible={modalVisible}
+        transparent={true}
+        animationType='fade'
+        onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text>Searching for: {searchText}</Text>
+            <Text>{selectedItemText}</Text>
             <Button title="Close" onPress={() => setModalVisible(false)} />
           </View>
         </View>
@@ -56,15 +63,17 @@ export default function Spaceships({ navigation }) {
       {loading ? (
         <ActivityIndicator size="large" color="blue" />
       ) : (
-        <FlatList
-          data={spaceships}
-          keyExtractor={(item) => item.uid}
-          renderItem={({ item }) => (
-          <Text style={styles.item}>{item.name}</Text>
-        )}
-        />
+        <ScrollView style={{ width: '100%' }}>
+          {spaceships.map((item) => (
+            <Swipeable
+              key={item.uid}
+              onSwipeableRightOpen={() => handleSwipe(item.name)}
+            >
+              <Text style={styles.item}>{item.name}</Text>
+            </Swipeable>
+          ))}
+        </ScrollView>
       )}
-      
     </View>
   );
 }
