@@ -13,4 +13,28 @@ export default StyleSheet.create({
     borderColor: "red",
     color: "black",
   },
+  input: {
+  height: 40,
+  borderColor: 'red',
+  borderWidth: 1,
+  borderRadius: 5,
+  paddingHorizontal: 10,
+  marginBottom: 10,
+  backgroundColor: 'white',
+},
+
+modalContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+},
+
+modalContent: {
+  width: 300,
+  padding: 20,
+  backgroundColor: 'white',
+  borderRadius: 10,
+  alignItems: 'center',
+},
 });
