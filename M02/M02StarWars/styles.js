@@ -48,7 +48,7 @@ posterImage: {
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
-    color: '#333',
+    color: 'Black',
   },
   detailsContainer: {
     marginTop: 20,
@@ -57,12 +57,12 @@ posterImage: {
     fontSize: 18,
     fontWeight: '600',
     marginBottom: 5,
-    color: '#555',
+    color: 'Black',
   },
   text: {
     fontSize: 16,
     marginBottom: 15,
-    color: '#333',
+    color: 'Black',
   },
   crawl: {
     fontSize: 14,
