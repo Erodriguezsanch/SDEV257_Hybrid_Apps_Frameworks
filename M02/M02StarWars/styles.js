@@ -37,4 +37,36 @@ modalContent: {
   borderRadius: 10,
   alignItems: 'center',
 },
+posterImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+    color: '#333',
+  },
+  detailsContainer: {
+    marginTop: 20,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 5,
+    color: '#555',
+  },
+  text: {
+    fontSize: 16,
+    marginBottom: 15,
+    color: '#333',
+  },
+  crawl: {
+    fontSize: 14,
+    fontStyle: 'italic',
+    color: '#444',
+  },
 });
