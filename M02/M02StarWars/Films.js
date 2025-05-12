@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, ActivityIndicator, TextInput, Button, Modal } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator, TextInput, Button, Modal, Image } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import styles from './styles';
@@ -37,6 +37,11 @@ export default function Films() {
 
   return (
     <View style={styles.container}>
+      <Image 
+        source={require('./assets/StarWars.png')}
+        style={{ width: 200, height: 80, resizeMode: 'contain', alignSelf: 'center', marginBottom: 20, paddingTop: 20 }}
+      />
+
       {/* Search */}
       <TextInput
         style={styles.input}
