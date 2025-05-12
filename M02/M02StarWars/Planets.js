@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, ActivityIndicator, TextInput, Button, Modal } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import styles from './styles';
 
 export default function Planets({ navigation }) {
@@ -69,7 +70,9 @@ export default function Planets({ navigation }) {
               key={item.uid}
               onSwipeableRightOpen={() => handleSwipe(item.name)}
             >
-              <Text style={styles.item}>{item.name}</Text>
+              <Animated.View entering={FadeIn.duration(2000)}>
+                <Text style={styles.item}>{item.name}</Text>
+              </Animated.View>
             </Swipeable>
           ))}
         </ScrollView>
